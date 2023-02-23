@@ -1,0 +1,19 @@
+﻿@model NewsManager.Models.Nouvelle
+
+@{
+    ViewBag.Title = "Create";
+}
+
+@{ Html.RenderPartial("NouvelleForm"); }
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script defer>
+        $("#ImageUrl").change(function () {
+            $("#Image").attr("src", $("#ImageUrl").val());
+        })
+    </script>
+}

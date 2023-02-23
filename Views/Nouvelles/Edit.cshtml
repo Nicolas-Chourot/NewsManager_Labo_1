@@ -1,0 +1,14 @@
+﻿@model NewsManager.Models.Nouvelle
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+@{ Html.RenderPartial("NouvelleForm");}
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

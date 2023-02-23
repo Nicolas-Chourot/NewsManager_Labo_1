@@ -1,0 +1,41 @@
+﻿@model IEnumerable<NewsManager.Models.Nouvelle>
+
+@{
+    ViewBag.Title = "Fil de nouvelles";
+}
+
+<br />
+<div class="NouvellesListControls">
+    @Helper.IconCmd("Create", "fa-plus-square", "Ajouter une nouvelle...")
+    @Helper.SelectList((SelectList)ViewBag.Categories, "Category", (int)Session["CurrentCategoryId"])
+</div>
+<div class="nouvellesContainer">
+    @foreach (var nouvelle in Model)
+    {
+        <div class="NouvelleContainer" nouvelle_id="@nouvelle.Id">
+            <div class="nouvelleContainer">
+                <div class="NouvelleContent">
+                    @Helper.NouvelleImage(nouvelle.ImageUrl)
+                    <div class="NouvelleTitle">@nouvelle.Titre</div>
+                    <div class="hideOverflow NouvelleText">@nouvelle.Texte</div>
+                    <div class="NouvelleText">...</div>
+                </div>
+                <div class="NouvelleTime_Category">
+                    <span>@Helper.When(nouvelle.DateAjout)</span> | <span>@nouvelle.Category.Name </span>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+@section Scripts {
+    <script defer>
+         $("#Category").change(() => {
+            window.location = "@Url.Action("SetCurrentCategoryId")" + "/" + $("#Category").val();
+         })
+         $(".NouvelleContainer").on("click", (event) => {
+            let id = event.currentTarget.getAttribute('nouvelle_id');
+            window.location = "@Url.Action("Details")" + "/" + id;
+         })
+    </script>
+}
+

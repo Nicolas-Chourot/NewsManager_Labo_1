@@ -1,0 +1,127 @@
+﻿@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css");
+
+body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+.navbar-inverse .navbar-toggle:hover,
+.navbar-inverse .navbar-toggle:focus {
+    background-color: #777;
+    border-color: #fff
+}
+
+.nouvellesContainer {
+    margin-top:20px;
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: repeat(auto-fill, 330px);
+}
+
+textarea {
+    display: block;
+    border: 1px solid lightgray;
+    border-radius: 4px;
+    width: 100%;
+    max-width: 280px;
+}
+
+.ellipsis {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.hideOverflow {
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.icon {
+    font-size: 25px !important;
+    cursor: pointer;
+    -webkit-text-stroke-width: 0.75px;
+    -webkit-text-stroke-color: #337ab7;
+    -webkit-text-fill-color: #337ab7;
+}
+
+    .icon:hover {
+        -webkit-text-stroke-color: #6dbafc;
+        -webkit-text-fill-color: #6dbafc;
+    }
+
+
+    .icon:active {
+        -webkit-text-stroke-color: #e0f1ff;
+        -webkit-text-fill-color: #e0f1ff;
+    }
+
+.NouvellesListControls {
+    display: grid;
+    grid-template-columns: 40px 305px;
+    align-items: center;
+}
+
+.NouvelleContainer {
+    border: 1px solid white;
+}
+
+    .NouvelleContainer:hover {
+        border: 1px solid gray;
+    }
+
+.NouvelleContent {
+    height: 315px;
+}
+
+.NouvelleTime_Category {
+    border-top: 1px solid gray;
+}
+
+.NouvelleImage {
+    Height: 200px;
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+}
+
+.NouvelleTitle {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.NouvelleText {
+    font-size: 11px;
+    height: 50px;
+    text-align:justify;
+}
+
+.imageControl .hiddenImageUrl {
+    display: none;
+}
+
+.imageControl:hover .hiddenImageUrl {
+    display: block;
+}
+
+

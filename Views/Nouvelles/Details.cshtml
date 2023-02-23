@@ -1,0 +1,22 @@
+﻿@model NewsManager.Models.Nouvelle
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<div style="font-size:36px; font-weight:bold">@Model.Titre</div>
+<div style="width:100%; height:600px; background:url(@Model.ImageUrl) no-repeat center; background-size:cover;"> </div>
+<br />
+@Helper.When(Model.DateAjout) | @Model.Category.Name
+<br />
+<br />
+<div style="text-align:justify">
+    @Model.Texte
+</div>
+<br />
+<br />
+<div style="display:grid; grid-template-columns:40px 40px 40px">
+    @Helper.IconCmd("Edit/" + Model.Id, "fa-edit", "Éditer " + Model.Titre)
+    @Helper.IconConfirmCmd("Delete/" + Model.Id, "fa-times-rectangle-o", "Effacer " + Model.Titre)
+    @Helper.IconCmd("Index/", "fa fa-arrow-left", "Retour")
+</div>

@@ -1,0 +1,87 @@
+﻿@helper IconCmd(string action, string icon_class, string TooltipMessage, string ToolTipPlacement = "bottom")
+{
+    var Url = new System.Web.Mvc.UrlHelper(HttpContext.Current.Request.RequestContext);
+    <a href="@Url.Action(action)" style="text-decoration:none">
+        <span class="icon fa @icon_class"
+              title="@TooltipMessage"
+              data-placement="@ToolTipPlacement">
+        </span>
+    </a>
+}
+
+
+@helper IconConfirmCmd(string Action, string icon_class, string TooltipMessage, string ToolTipPlacement = "bottom")
+{
+    //// http://bootboxjs.com/documentation.html#bb-confirm
+    var Url = new System.Web.Mvc.UrlHelper(HttpContext.Current.Request.RequestContext);
+    <div onclick='bootbox.confirm("@TooltipMessage", function(result){ if (result) window.location = "@Url.Action(Action)"; })'>
+        <span class="icon fa @icon_class"
+              title="@TooltipMessage"
+              data-placement="@ToolTipPlacement">
+        </span>
+    </div>
+}
+
+@helper DataList(List<string> data, string id, string value = "")
+{
+    <input list="@id" name="@id" class="form-control custom-select custom-select-sm" data-val="true" data-val-required="Requis"
+           value="@value" />
+    <datalist id="@id">
+        @if (data != null)
+        {
+            foreach (string item in data)
+            {
+                <option value="@item" />
+            }
+        }
+    </datalist>
+}
+
+@helper SelectList(System.Web.Mvc.SelectList selectList, string id, int value)
+{
+    <select id="@id" class="form-control">
+        @foreach (var item in selectList)
+        {
+            <option value="@item.Value" @(item.Value == value.ToString() ? "selected" : "")>@item.Text</option>
+        }
+    </select>
+}
+
+@helper When(DateTime date)
+{
+    TimeSpan span = DateTime.Now.Subtract(date);
+    if (span.Days > 0)
+    {
+        <div style="float:left">Le @date.ToLongDateString()&nbsp;</div>
+        <div class="glyphicon glyphicon-time smallGlyphicon" title="@date.ToShortTimeString()" data-placement="right"></div>
+    }
+    else
+    {
+        if (span.Hours > 1)
+        {
+            <span>Il y a @span.Hours heures</span>
+        }
+        else
+        {
+            if (span.Minutes > 1)
+            {
+                <span>Il y a @span.Minutes minutes</span>
+            }
+            else
+            {
+                <span>à l'instant</span>
+            }
+        }
+    }
+}
+@helper ImageControl(string imageUrl, string defaultImageUrl)
+{
+    var Url = new System.Web.Mvc.UrlHelper(HttpContext.Current.Request.RequestContext);
+    imageUrl = (!string.IsNullOrEmpty(imageUrl) ? imageUrl : Url.Content(defaultImageUrl));
+    <img src="@imageUrl" id="Image" style="width:280px; border:1px solid lightgray; border-radius:4px" alt="Url invalide" />
+}
+@helper NouvelleImage(string imageUrl)
+{
+    <div class="NouvelleImage" style="background-image:url(@imageUrl)"> </div>
+}
+
