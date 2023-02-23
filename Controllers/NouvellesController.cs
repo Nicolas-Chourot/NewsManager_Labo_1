@@ -79,5 +79,11 @@ namespace NewsManager.Controllers
             }
             return RedirectToAction("Index");
         }
+        [HttpGet]
+        public ActionResult Delete(int id)
+        {
+            DB.RemoveNouvelle(id);
+            return RedirectToAction("Index");
+        }
     }
 }

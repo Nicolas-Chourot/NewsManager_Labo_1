@@ -56,10 +56,9 @@ namespace NewsManager.Models
             DB.SaveChanges();
             return true;
         }
-        public static bool RemoveNouvelle(this AppDBEntities DB, Nouvelle nouvelle)
+        public static bool RemoveNouvelle(this AppDBEntities DB, int id)
         {
-            Nouvelle nouvelleToDelete = DB.Nouvelles.Find(nouvelle.Id);
-            DB.Nouvelles.Remove(nouvelleToDelete);
+            DB.Nouvelles.Remove(DB.Nouvelles.Find(id));
             DB.SaveChanges();
             return true;
         }
