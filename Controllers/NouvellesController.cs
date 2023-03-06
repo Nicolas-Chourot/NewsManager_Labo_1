@@ -24,11 +24,6 @@ namespace NewsManager.Controllers
             return RedirectToAction("Index");
         }
 
-        public PartialViewResult NouvelleForm(Nouvelle nouvelle)
-        {
-            return PartialView(nouvelle);
-        }
-
         [HttpGet]
         public ActionResult Create()
         {
