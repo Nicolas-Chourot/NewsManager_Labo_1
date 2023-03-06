@@ -32,6 +32,7 @@ namespace NewsManager.Controllers
         [HttpGet]
         public ActionResult Create()
         {
+            ViewBag.Categories = DB.CategoriesNameList();
             return View(new Nouvelle());
         }
 
@@ -43,6 +44,7 @@ namespace NewsManager.Controllers
                 DB.AddNouvelle(nouvelle);
                 return RedirectToAction("Index");
             }
+            ViewBag.Categories = DB.CategoriesNameList();
             return View(new Nouvelle());
         }
 
@@ -66,16 +68,16 @@ namespace NewsManager.Controllers
                 DB.UpdateNouvelle(nouvelle);
                 return RedirectToAction("Index");
             }
+            ViewBag.Categories = DB.CategoriesNameList();
             return View(new Nouvelle());
         }
         [HttpGet]
         public ActionResult Details(int id)
         {
-            Nouvelle nouvelleToEdit = DB.Nouvelles.Find(id);
-            if (nouvelleToEdit != null)
+            Nouvelle nouvelle = DB.Nouvelles.Find(id);
+            if (nouvelle != null)
             {
-                ViewBag.Categories = DB.CategoriesNameList();
-                return View(nouvelleToEdit);
+                return View(nouvelle);
             }
             return RedirectToAction("Index");
         }
